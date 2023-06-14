@@ -34,8 +34,8 @@ ARUCO_DICT = {
 class Detector:
     def __init__(self, cropTL, arucoDict=cv2.aruco.DICT_4X4_250):
         # For yolo object detection
-        self.net = cv2.dnn.readNet(r"C:\Users\kris.nguyen\Projects\final-project\gokart-final\server\pymodule\common\yolov4-tiny.weights",
-                                   r"C:\Users\kris.nguyen\Projects\final-project\gokart-final\server\pymodule\common\yolov4-tiny.cfg")
+        self.net = cv2.dnn.readNet(r"D:\Final-gokart\server\pymodule\common\yolov4-tiny.weights",
+                                   r"D:\Final-gokart\server\pymodule\common\yolov4-tiny.cfg")
         self.net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
         self.net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
         # all detection classes
@@ -92,21 +92,6 @@ class Detector:
 
     # execute self.process method in a parallel thread
     def start(self):
-        # # Connect to the SocketIO server
-        # def connect():
-        #     print('Connected to server')
-
-        # # Handle the disconnect event
-        # def disconnect():
-        #     print('Disconnected from server')
-
-        # # Start the SocketIO event loop in a separate thread
-        # def start_socketio():
-        #     sio.connect('http://localhost:8000')  # Replace with your actual server address
-        #     sio.wait()
-
-        # Thread(target=start_socketio).start()
-
         Thread(target=self.process, args=()).start()
         # return self for chaining
         # ex: Myclass.start().otherMethod()
@@ -141,7 +126,7 @@ class Detector:
             class_id = np.argmax(scores)
             confidence = scores[class_id]
             # if it is a motor bike
-            if class_id == 3 and confidence >= 0.4:
+            if class_id == 3 and confidence >= 0.15:
                 self.shouldClearKartObj = False
                 center_x = int(detection[0] * frame_width)
                 center_y = int(detection[1] * frame_height)

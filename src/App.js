@@ -8,7 +8,6 @@ const App = () => {
 	useEffect(() => {
 		const newSocket = io("http://localhost:5000");
 		setSocket(newSocket);
-		console.log("a");
 		return () => {
 			newSocket.disconnect();
 		};

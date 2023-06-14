@@ -4,7 +4,7 @@ import imutils
 from imutils.video import FileVideoStream
 import base64
 import numpy as np
-from flask import Flask
+from flask import Flask, render_template
 from flask_socketio import SocketIO
 from detector import Detector
 from speedHandler import calculate_average_speed
@@ -19,12 +19,15 @@ colors = [(230, 25, 75), (60, 180, 75), (255, 225, 25), (0, 130, 200), (245, 130
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 def process_frames():
     H = None
     W = None
     frame_count = 0
-    cam = FileVideoStream(r"server/pymodule/2022-t1-15kmh.mp4").start()
+    cam = FileVideoStream(r"D:\Final-gokart\server\pymodule\1_new.mp4").start()
     detector = Detector(cropTL).start()
     kartList = []
 
@@ -51,12 +54,12 @@ def process_frames():
 
         if frame_count % 2 == 0:
             frame_d = frame.copy()
-            frame_send = imutils.resize(frame, width=int(0.5*frame_d.shape[1]))
+            frame_send = imutils.resize(frame, width=int(0.3*frame_d.shape[1]))
             _, frame_data = cv2.imencode('.jpg', frame_send)
             frame_base64 = base64.b64encode(frame_data).decode('utf-8')
+            socketio.emit('frame', frame_base64)
 
             # Emit the frame to the frontend
-            socketio.emit('frame', frame_base64)
             if (detector.kartObj):
                 kartList.append(detector.kartObj)
                 speeds = calculate_average_speed(kartList)
@@ -68,13 +71,13 @@ def process_frames():
 
             # socketio.sleep(0.033)  # Delay for approximately 30 frames per second
 
-        frame = imutils.resize(frame, width=int(0.5*W))
+        # frame = imutils.resize(frame, width=int(0.5*W))
         # cv2.imshow("Live", frame)
         # cv2.imshow("mask", frame2)
         # if detector.frame is not None:
-        #     tmp = imutils.resize(detector.frame, width=int(W))
+            # tmp = imutils.resize(detector.frame, width=int(W))
         # cv2.imshow("detector", tmp)
-        key = cv2.waitKey(15) & 0xFF
+        key = cv2.waitKey(25) & 0xFF
         # if the `q` key is pressed, break from the loop
         if key == ord("q"):
             break
@@ -87,6 +90,7 @@ def handle_connect():
     print('Client connected')
     # Start the background task to process frames
     socketio.start_background_task(target=process_frames)
+    # process_frames()
 
 
 # Run the Flask-SocketIO server
