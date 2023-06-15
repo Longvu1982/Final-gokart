@@ -6,6 +6,7 @@ import base64
 import numpy as np
 from flask import Flask, render_template
 from flask_socketio import SocketIO
+import os
 from detector import Detector
 from speedHandler import calculate_average_speed
 
@@ -19,15 +20,17 @@ colors = [(230, 25, 75), (60, 180, 75), (255, 225, 25), (0, 130, 200), (245, 130
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
 
 def process_frames():
     H = None
     W = None
     frame_count = 0
-    cam = FileVideoStream(r"D:\Final-gokart\server\pymodule\1_new.mp4").start()
+    video_file = os.path.join("server", "pymodule", "t_1_cut.mp4")
+    cam = FileVideoStream(video_file).start()
     detector = Detector(cropTL).start()
     kartList = []
 
@@ -75,9 +78,9 @@ def process_frames():
         # cv2.imshow("Live", frame)
         # cv2.imshow("mask", frame2)
         # if detector.frame is not None:
-            # tmp = imutils.resize(detector.frame, width=int(W))
+        # tmp = imutils.resize(detector.frame, width=int(W))
         # cv2.imshow("detector", tmp)
-        key = cv2.waitKey(25) & 0xFF
+        key = cv2.waitKey(40) & 0xFF
         # if the `q` key is pressed, break from the loop
         if key == ord("q"):
             break

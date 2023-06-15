@@ -4,6 +4,7 @@ from threading import Thread
 import time
 import queue
 import numpy as np
+import os
 import json
 
 ARUCO_DICT = {
@@ -34,8 +35,12 @@ ARUCO_DICT = {
 class Detector:
     def __init__(self, cropTL, arucoDict=cv2.aruco.DICT_4X4_250):
         # For yolo object detection
-        self.net = cv2.dnn.readNet(r"D:\Final-gokart\server\pymodule\common\yolov4-tiny.weights",
-                                   r"D:\Final-gokart\server\pymodule\common\yolov4-tiny.cfg")
+        weights_path = os.path.join("server",
+                                    "pymodule", "common", "yolov4-tiny.weights")
+        print(weights_path)
+        config_path = os.path.join(
+            "server", "pymodule", "common", "yolov4-tiny.cfg")
+        self.net = cv2.dnn.readNet(weights_path, config_path)
         self.net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
         self.net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
         # all detection classes
@@ -81,7 +86,8 @@ class Detector:
             return x
 
     def initYolo(self):
-        with open(r"server/pymodule/common/coco.names", "r") as f:
+        file_path = os.path.join("server", "pymodule", "common", "coco.names")
+        with open(file_path, "r") as f:
             # strip equal to trim (remove white spaces)
             self.classes = [line.strip() for line in f.readlines()]
         layer_names = self.net.getLayerNames()
