@@ -80,7 +80,7 @@ def process_frames():
         # if detector.frame is not None:
         # tmp = imutils.resize(detector.frame, width=int(W))
         # cv2.imshow("detector", tmp)
-        key = cv2.waitKey(40) & 0xFF
+        key = cv2.waitKey(30) & 0xFF
         # if the `q` key is pressed, break from the loop
         if key == ord("q"):
             break

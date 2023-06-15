@@ -6,7 +6,7 @@ import OtherInfo from "./OtherInfo";
 const InfoSection = ({ frame, data }) => {
 	return (
 		<div className="grid grid-cols-12 min-h-[calc(100vh-104px)]">
-			<div className="col-span-5 bg-[#393743] min-h-full p-6 flex flex-col items-stretch">
+			<div className="col-span-5 bg-[#393743] min-h-full p-6 flex flex-col">
 				<VideoSection frame={frame} />
 				<TrackDetails />
 				<OtherInfo />

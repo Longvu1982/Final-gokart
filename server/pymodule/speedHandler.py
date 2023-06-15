@@ -3,13 +3,16 @@ from math import sqrt
 # format
 # {
 #     "id": number,
-#     "lap": number
+#     "current_lap": number
 #     "count": number,
 #     "total_speed": number (km/h),
 #     "last_x": number (cm),
 #     "last_y": number (cm),
 #     "last_t": number (ns),
 #     "average_speed": number (km/h),
+#     "lap_time": number[] (km/h),
+#     "lap_speed": number[] (km/h),
+#     "end_prev_lap": number (ns),
 # }
 
 

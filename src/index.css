@@ -3,19 +3,17 @@
 @tailwind utilities;
 
 @media screen and (min-width: 768px) {
-    body {
-        overflow: hidden;
-        height: 100vh;
-    }
-
-    ;
+  body {
+    overflow: hidden;
+    height: 100vh;
+  }
 }
 
 .max-line {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 10;
-    /* number of lines to show */
-    line-clamp: 10;
-    -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  /* number of lines to show */
+  line-clamp: 9;
+  -webkit-box-orient: vertical;
 }
