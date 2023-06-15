@@ -72,7 +72,6 @@ def process_frames():
                     array_data.append(entry)
                 socketio.emit('data', array_data)
 
-            # socketio.sleep(0.033)  # Delay for approximately 30 frames per second
 
         # frame = imutils.resize(frame, width=int(0.5*W))
         # cv2.imshow("Live", frame)
@@ -80,7 +79,7 @@ def process_frames():
         # if detector.frame is not None:
         # tmp = imutils.resize(detector.frame, width=int(W))
         # cv2.imshow("detector", tmp)
-        key = cv2.waitKey(30) & 0xFF
+        key = cv2.waitKey(25) & 0xFF
         # if the `q` key is pressed, break from the loop
         if key == ord("q"):
             break

@@ -2,6 +2,7 @@ import React from "react";
 import VideoSection from "./VideoSection";
 import TrackDetails from "./TrackDetails";
 import OtherInfo from "./OtherInfo";
+import TopInfo from "./TopInfo";
 
 const InfoSection = ({ frame, data }) => {
 	return (
@@ -11,8 +12,8 @@ const InfoSection = ({ frame, data }) => {
 				<TrackDetails />
 				<OtherInfo />
 			</div>
-			<div>
-				{data?.map((item) => (
+			<div className="bg-[#2f2c36] w-full col-span-7">
+				{/* {data?.map((item) => (
 					<>
 						<p key={item.id}>{`${item.id}       ${item.current_lap}`}</p>
 						<p>Lap time</p>
@@ -24,7 +25,8 @@ const InfoSection = ({ frame, data }) => {
 							<span key={index}>{index + 1 + ":    " + speed.toFixed(3) + "km/h    "}</span>
 						))}
 					</>
-				))}
+				))} */}
+				<TopInfo data = {data} />
 			</div>
 		</div>
 	);
