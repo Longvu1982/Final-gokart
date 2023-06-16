@@ -19,7 +19,10 @@ const App = () => {
 	useEffect(() => {
 		if (socket) {
 			socket.on("frame", handleDetectedFrame);
-			socket.on("data", (data) => setData(data));
+			socket.on("data", (data) => {
+				console.log(data);
+				setData(data);
+			});
 		}
 	}, [socket]);
 

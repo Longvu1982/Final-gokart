@@ -132,7 +132,7 @@ class Detector:
             class_id = np.argmax(scores)
             confidence = scores[class_id]
             # if it is a motor bike
-            if class_id == 3 and confidence >= 0.15:
+            if class_id == 3 and confidence >= 0.2:
                 self.shouldClearKartObj = False
                 center_x = int(detection[0] * frame_width)
                 center_y = int(detection[1] * frame_height)
