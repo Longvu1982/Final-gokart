@@ -20,10 +20,18 @@ colors = [(230, 25, 75), (60, 180, 75), (255, 225, 25), (0, 130, 200), (245, 130
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-
 # @app.route('/')
 # def index():
 #     return render_template('index.html')
+
+processing_started = False
+
+@app.route('/start_processing', methods=['POST'])
+def start_processing():
+    global processing_started
+    processing_started = True
+    socketio.start_background_task(target=process_frames)
+    return 'Processing started'
 
 def process_frames():
     H = None
@@ -35,7 +43,7 @@ def process_frames():
     kartList = []
 
     while True:
-        if detector.stopped:
+        if detector.stopped or not processing_started:
             break
         frame = cam.read()
         if (frame is None):
@@ -78,7 +86,7 @@ def process_frames():
         # if detector.frame is not None:
         # tmp = imutils.resize(detector.frame, width=int(W))
         # cv2.imshow("detector", tmp)
-        key = cv2.waitKey(50) & 0xFF
+        key = cv2.waitKey(30) & 0xFF
         # if the `q` key is pressed, break from the loop
         if key == ord("q"):
             break
@@ -90,7 +98,7 @@ def process_frames():
 def handle_connect():
     print('Client connected')
     # Start the background task to process frames
-    socketio.start_background_task(target=process_frames)
+    # socketio.start_background_task(target=process_frames)
     # process_frames()
 
 

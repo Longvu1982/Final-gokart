@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 import Images from "../assets/images/Image";
 
 const drivers = [
@@ -41,8 +41,8 @@ const TopInfo = ({ data }) => {
 		if (purposeArr?.length === 0) driver = { name: "", img: "", id: -1 };
 		else driver = getDriverById(id);
 		return (
-			<div className="flex flex-col items-center gap-6 w-3/5 shrink-0 grow-0 pb-2">
-				<h1 className="text-gray-200 font-semibold text-2xl">LEADING</h1>
+			<div className="flex flex-col items-center gap-6 w-2/5 shrink-0 grow-0 pb-2">
+				<h1 className="text-gray-200 font-semibold text-xl">LEADING</h1>
 				<div className="w-full aspect-[5/4] overflow-hidden relative">
 					{driver.img ? (
 						<img src={driver.img} alt="" srcset="" className="w-full h-full object-cover" />
@@ -60,7 +60,7 @@ const TopInfo = ({ data }) => {
 				) : (
 					<div className="h-[32px] flex items-end justify-center gap-3">
 						<span className="loader"></span>
-						<span className="text-gray-100 breath">loading...</span>
+						<span className="text-white breath">pending...</span>
 					</div>
 				)}
 			</div>
@@ -73,7 +73,7 @@ const TopInfo = ({ data }) => {
 				<div className="flex justify-between">
 					{renderLeadingDriver(sortedLaptime?.[0]?.lap_time, sortedLaptime?.[0]?.id)}
 					<div className="flex flex-col items-center gap-6 mr-3">
-						<h1 className="text-gray-200 font-semibold text-2xl">Top 3 Lap time</h1>
+						<h1 className="text-gray-200 font-semibold text-xl">Top 3 Lap time</h1>
 						<div className="flex flex-col gap-2">
 							{sortedLaptime?.map((item, index) => (
 								<p key={item.id} className="flex flex-col items-center gap-1">
@@ -91,7 +91,7 @@ const TopInfo = ({ data }) => {
 				<div className="flex justify-between">
 					{renderLeadingDriver(sortedLapSpeed?.[0]?.lap_time, sortedLapSpeed?.[0]?.id)}
 					<div className="flex flex-col items-center gap-6 mr-3">
-						<h1 className="text-gray-200 font-semibold text-2xl">Top 3 Speed</h1>
+						<h1 className="text-gray-200 font-semibold text-xl">Top 3 Speed</h1>
 						<div className="flex flex-col gap-2">
 							{sortedLapSpeed?.map((item, index) => (
 								<p key={item.id} className="flex flex-col items-center gap-1">

@@ -2,7 +2,7 @@ import React from "react";
 
 const TrackDetails = () => {
 	return (
-		<div className="flex items-center justify-between my-6 flex-wrap gap-y-6">
+		<div className="flex items-center justify-between flex-wrap gap-y-6">
 			<div className="flex gap-4 items-end">
 				<div className="font-semibold text-gray-400 text-lg">
 					<p className="-mb-1">NUMBER</p>
