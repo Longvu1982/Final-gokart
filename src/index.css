@@ -86,3 +86,11 @@
 .custom-grid-drivers-container {
   grid-template-rows: 32px 1fr;
 }
+
+.custom-clip-path {
+  clip-path: polygon(0 0, 100% 0, 71% 100%, 0% 100%);
+}
+
+.octa-btn {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}

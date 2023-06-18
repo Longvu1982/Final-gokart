@@ -1,0 +1,37 @@
+- Bài toán: Trạng thái, tham số
+	- Xe tốc độ < 40km/s
+	- Đường đua cố định và đi 1 chiều
+	- Độ rộng < 5m
+	- Làm khảo sát (diện tích đường đua trong camera)
+	- Độ phân giải camera
+- Yêu cầu :
+	- Không tốn kém 
+	- Không gắn định vị và cảm biến lên xe (bị đâm hỏng,  nhiên liệu, chi phí cẩm bién)
+	- => Đo chi phí thấp
+	=> Nghiên cứu các phương pháp
+	- Chỉ ra sự tốn kém các phương pháp khác
+	=> Đề xuất phương án 
+- Bảng công việc
+	- STT, Nội dung, mô tả chi tiết
+	- format: 1  1.1  1.1.2
+	- Các nhiệm vụ hoàn thành 
+	- Nhiệm vụ trong tương lai 
+- Phương án:
+	- Kĩ thuật sử dụng: xử lí ảnh với IP cam (độ phân giải 2K)
+	- Ý tưởng: Dùng phát hiện và dịnh danh dùng deep learning, object detetion, định danh ID bằng mã tag
+	- Khảo sát object detection => chon YOLO va li do
+	- Aruco: detect don gian, do chinh xac cao, khong bi anh huong boi perspective, khong ho tro GPU
+	- Dua ra khao sat cai thien thoi gian tu viec cat ra ROI
+	- Sơ đồ activity diagram, flow chart (thuật toán, luồng xử lí)
+	- Các trường hợp gây ra sai số, các khó khăn gặp phải
+- Cai dat:
+	- Phan cung: dia hinh, camera, pc, ...
+	- Phan mem: backend, frontend, ...
+- Ket qua:
+	- Demo va quay video lai
+	- Validate:
+	- Bam thoi gian cac moc di qua vach dich
+	- Validate van toc: co nguoi dung do thu cong
+	- Validate trong khuon kho cho phep, dua ra van toc gan dung sai so trong khoang chap nhan duoc
+	- Nhac lai cac nhiem vu
+	- Nhung cai da hoan thanh duoc
