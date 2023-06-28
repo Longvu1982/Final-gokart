@@ -77,7 +77,7 @@ class Detector:
         # Constant for algorithm
         self.finishLineY = 420
         self.maxDistance = 80
-        self.maxKart = 20
+        self.maxKartID = 20
 
     def roundZero(self, x):
         if x < 0:
@@ -157,7 +157,7 @@ class Detector:
                     if len(corners) > 0:
                         for id in ids:
                             first_id = id[0]
-                            if first_id < self.maxKart:
+                            if first_id < self.maxKartID:
                                 # cordinate of center kart + aruco ID
                                 self.centerPoints.append(
                                     (int(center_x + self.cropTL[0]), int(center_y + self.cropTL[1]), first_id))
