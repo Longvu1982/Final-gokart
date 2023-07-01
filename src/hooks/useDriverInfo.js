@@ -23,7 +23,6 @@ const useDriverStore = create((set) => ({
 		set((state) => {
 			const cloneDriver = structuredClone(state.drivers);
 			const existingDriverIndex = cloneDriver.findIndex((driver) => driver.id === newDriver.id);
-			console.log(existingDriverIndex);
 			if (existingDriverIndex >= 0) {
 				cloneDriver[existingDriverIndex] = newDriver;
 			} else cloneDriver.push(newDriver);

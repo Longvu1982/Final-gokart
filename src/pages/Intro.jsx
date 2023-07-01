@@ -10,15 +10,15 @@ const Intro = () => {
       <img
         src={Images.gokartBg}
         alt=""
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover brightness-50 xl:brightness-100"
       />
       <div className="custom-clip-path absolute top-0 left-0 h-full w-3/5 bg-black bg-opacity-80 text-white">
-        <div className="absolute top-[40%] left-20">
+        <div className="absolute top-[35%] xl:top-[40%] left-4 xl:left-20">
           <h1 className="text-xl ml-2 font-semibold mb-6">
             Experience the most advance tracking system
           </h1>
-          <h1 className="text-8xl font-bold mb-2">KARTRACING</h1>
-          <h1 className="text-4xl font-semibold ml-2 mb-10">START NOW</h1>
+          <h1 className="text-5xl xl:text-8xl ml-2 xl:ml-0 font-bold mb-2">KARTRACING</h1>
+          <h1 className="text-3xl xl:text-4xl font-semibold ml-2 mb-10">START NOW</h1>
           <div className="flex items-center">
             <div onClick={() => {
                 navigate("tracking")

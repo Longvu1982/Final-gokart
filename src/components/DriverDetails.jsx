@@ -29,7 +29,7 @@ const DriverDetails = ({ data }) => {
       <h1 className="text-gray-200 text-xl mt-10 font-semibold">
         Drivers details
       </h1>
-      <div className="overflow-y-auto max-h-[calc(100vh-280px)]">
+      <div className="overflow-y-auto xl:max-h-[calc(100vh-280px)]">
         {drivers.map((driver, index) => (
           <DriverItem
             key={index}

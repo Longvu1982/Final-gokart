@@ -11,11 +11,9 @@ const VideoSection = ({ frame }) => {
     })
       .then((response) => response.text())
       .then((data) => {
-        console.log(data);
       })
       .catch((error) => {
         setError(true);
-        console.log(error);
       })
       .finally(() => setLoading(false));
   };
@@ -30,8 +28,9 @@ const VideoSection = ({ frame }) => {
       </>
     );
   };
+
   return (
-    <div className="bg-gray-300 p-2">
+    <div className="bg-gray-300 p-2 sticky md:static top-2 md:top-0">
       <div className="aspect-video w-full overflow-hidden bg-[#393743] flex items-center justify-center">
         {frame ? (
           <img

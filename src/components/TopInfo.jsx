@@ -26,8 +26,6 @@ const TopInfo = ({ data }) => {
 
   const getDriverById = (id) => {
     const driver = drivers.find((item) => item.id === id);
-    console.log(drivers, driver, id)
-
     if (driver) return driver;
     return {};
   };
@@ -54,13 +52,12 @@ const TopInfo = ({ data }) => {
     else driver = getDriverById(id);
     return (
       <div className="flex flex-col items-center gap-6 w-2/5 shrink-0 grow-0 pb-2">
-        <h1 className="text-gray-200 font-semibold text-xl">LEADING</h1>
+        <h1 className="text-gray-200 font-semibold text-xl hidden xl:show">LEADING</h1>
         <div className="w-full aspect-[5/4] overflow-hidden relative">
           {driver.img ? (
             <img
               src={driver.img}
               alt=""
-              srcset=""
               className="w-full h-full object-cover"
             />
           ) : (
@@ -68,16 +65,15 @@ const TopInfo = ({ data }) => {
               <img
                 src={Images.avtPlaceholder2}
                 alt=""
-                srcset=""
                 className="w-full h-full object-cover breath"
               />
             </div>
           )}
         </div>
         {driver?.name?.[0] ? (
-          <h1 className="text-gray-200 flex items-center gap-2 text-2xl transition-all font-light">
+          <h1 className="text-gray-200 flex flex-col md:flex-row items-center gap-2 text-lg md:text-2xl transition-all font-light">
             <span>{driver?.name?.[0] ?? "..."}</span>
-            <span className="font-semibold">{driver?.name?.[1]}</span>
+            <span className="font-semibold">{driver?.name?.[1] ?? ""}</span>
           </h1>
         ) : (
           <div className="h-[32px] flex items-end justify-center gap-3">
@@ -91,23 +87,23 @@ const TopInfo = ({ data }) => {
 
   return (
     <div className="grid grid-cols-2 gap-6 p-6 px-12 pt-12">
-      <div className="w-full bg-[#393743] p-4">
+      <div className="w-full bg-[#393743] p-2 md:p-4">
         <div className="flex justify-between">
           {renderLeadingDriver(
             sortedLaptime?.[0]?.lap_time,
             sortedLaptime?.[0]?.id
           )}
-          <div className="flex flex-col items-center gap-6 mr-3">
-            <h1 className="text-gray-200 font-semibold text-xl">
+          <div className="flex flex-col items-end md:items-center gap-6 mr-3">
+            <h1 className="text-gray-200 font-semibold text-base md:text-xl">
               Top 3 Lap time
             </h1>
             <div className="flex flex-col gap-2">
               {sortedLaptime?.map((item, index) => (
                 <p key={item.id} className="flex flex-col items-center gap-1">
-                  <span className="text-gray-400 text-lg">{`Top ${
+                  <span className="text-gray-400 text-base md:text-lg">{`Top ${
                     index + 1
                   }`}</span>
-                  <span className="text-gray-200 text-xl font-semibold">
+                  <span className="text-gray-200 text-sm md:text-xl font-semibold">
                     {item.lap_time?.length > 0
                       ? Math.min(...item.lap_time)?.toFixed(2) + "s"
                       : "..."}
@@ -118,21 +114,21 @@ const TopInfo = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="w-full bg-[#393743] p-4">
+      <div className="w-full bg-[#393743] p-2 md:p-4">
         <div className="flex justify-between">
           {renderLeadingDriver(
             sortedLapSpeed?.[0]?.lap_time,
             sortedLapSpeed?.[0]?.id
           )}
-          <div className="flex flex-col items-center gap-6 mr-3">
-            <h1 className="text-gray-200 font-semibold text-xl">Top 3 Speed</h1>
+          <div className="flex flex-col items-end md:items-center gap-6 mr-3">
+            <h1 className="text-gray-200 font-semibold text-base md:text-xl">Top 3 Speed</h1>
             <div className="flex flex-col gap-2">
               {sortedLapSpeed?.map((item, index) => (
                 <p key={item.id} className="flex flex-col items-center gap-1">
-                  <span className="text-gray-400 text-lg">{`Top ${
+                  <span className="text-gray-400 text-base md:text-lg">{`Top ${
                     index + 1
                   }`}</span>
-                  <span className="text-gray-200 text-xl font-semibold">
+                  <span className="text-gray-200 text-sm md:text-xl font-semibold">
                     {item.lap_speed?.length > 0
                       ? Math.max(...item.lap_speed)?.toFixed(2) + " km/h"
                       : "..."}

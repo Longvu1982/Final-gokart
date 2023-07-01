@@ -16,7 +16,7 @@ const tabs = [
 const InfoSection = ({ frame, data }) => {
   const [selectedTab, setSelectedTab] = useState(1);
   return (
-    <div className="grid grid-cols-12 h-[calc(100vh-84px)]">
+    <div className="flex-flex-col xl:grid grid-cols-12 xl:h-[calc(100vh-84px)]">
       <div className="col-span-5 bg-[#393743] p-6 flex flex-col gap-10">
         <VideoSection frame={frame} />
         <TrackDetails />

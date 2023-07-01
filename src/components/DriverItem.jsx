@@ -12,16 +12,16 @@ const DriverItem = ({ driver, driverData, data, index }) => {
       >
         <div className="flex items-center justify-start gap-10 col-span-2">
           <span className="text-gray-300">{index}</span>
-          <div className="w-16 aspect-[5/4] overflow-hidden -mt-2">
+          <div className="w-16 aspect-[5/4] overflow-hidden hidden md:block -mt-2">
             <img
               src={driver.img}
               alt=""
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-gray-200 flex items-center gap-2 text-xl font-light">
-            <span>{driver.name[0]}</span>
-            <span className="font-semibold">{driver.name[1]}</span>
+          <p className="text-gray-200 flex items-center gap-2 text-lg md:text-xl font-light">
+            <span>{driver.name?.[0] ?? ""}</span>
+            <span className="font-semibold">{driver.name?.[1] ?? ""}</span>
           </p>
         </div>
         <div className="col-span-3 flex items-center justify-evenly">
@@ -32,12 +32,12 @@ const DriverItem = ({ driver, driverData, data, index }) => {
             </p>
           </div>
           <div className="relative">
-            <div className="text-5xl font-bold opacity-30 text-gray-100 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="text-3xl md:text-5xl font-bold opacity-30 text-gray-100 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
               {driver.id}
             </div>
             <img
               src={Images.car2}
-              className="w-32 -mb-2 brightness-75 opacity-75"
+              className="w-20 md:w-32 -mb-2 brightness-75 opacity-75"
               alt=""
             />
           </div>

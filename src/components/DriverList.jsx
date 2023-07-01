@@ -26,7 +26,7 @@ export const DriverList = ({ data }) => {
 	return (
 		<div className="p-6 grid gap-3">
 			<h1 className="text-gray-200 text-xl font-semibold">Drivers list</h1>
-			<div className="overflow-y-auto max-h-[336px]">
+			<div className="xl:overflow-y-auto xl:max-h-[336px]">
 				{drivers.map((driver, index) => (
 					<div
 						key={driver.id}
@@ -34,7 +34,7 @@ export const DriverList = ({ data }) => {
 					>
 						<div className="flex items-center justify-start gap-10 col-span-2">
 							<span className="text-gray-300">{index + 1}</span>
-							<div className="w-20 aspect-[5/4] overflow-hidden">
+							<div className="hidden md:show md:w-20 aspect-[5/4] shrink-0 grow-0 overflow-hidden">
 								<img src={driver.img} alt="" className="w-full h-full object-cover" />
 							</div>
 							<p className="text-gray-200 flex items-center gap-2 text-xl font-light">
@@ -50,10 +50,10 @@ export const DriverList = ({ data }) => {
 								</p>
 							</div>
 							<div className="relative">
-								<div className="text-6xl font-bold opacity-30 text-gray-100 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+								<div className="text-4xl md:text-6xl font-bold opacity-30 text-gray-100 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
 									{driver.id}
 								</div>
-								<img src={Images.car2} className="w-40 -mb-6 brightness-75 opacity-75" alt="" />
+								<img src={Images.car2} className="w-20 md:w-40 -mb-6 brightness-75 opacity-75" alt="" />
 							</div>
 						</div>
 					</div>

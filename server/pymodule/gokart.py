@@ -9,6 +9,8 @@ from flask_socketio import SocketIO
 import os
 from detector import Detector
 from speedHandler import calculate_average_speed
+from flask_cors import CORS
+
 
 # Variables
 cropTL = (657, 307)
@@ -18,6 +20,7 @@ colors = [(230, 25, 75), (60, 180, 75), (255, 225, 25), (0, 130, 200), (245, 130
 
 # init flask backend app
 app = Flask(__name__)
+CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # @app.route('/')

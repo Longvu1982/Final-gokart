@@ -61,13 +61,12 @@ const Form = ({ setStep }) => {
 	};
 
 	useEffect(() => {
-		console.log(trackInfo);
 		setTrackName(trackInfo.name);
 		setLaps(trackInfo.laps);
 		setLength(trackInfo.length);
 		setTrackDescription(trackInfo.description);
 		setArea(trackInfo.area);
-	}, []);
+	}, [trackInfo.name, trackInfo.laps, trackInfo.length, trackInfo.description, trackInfo.area]);
 
 	return (
 		<div className="w-full h-[calc(100vh-84px)] overflow-y-auto bg-[#2f2c36] text-white relative">
@@ -77,7 +76,7 @@ const Form = ({ setStep }) => {
 			<div className="absolute inset-0 px-6 py-10">
 				<p className="text-center text-2xl font-semibold uppercase mb-20">Fill in the info</p>
 				<div className="max-w-[1600px] containter mx-auto">
-					<div className="grid grid-cols-2 gap-10">
+					<div className="grid grid-rows-2 xl:grid-rows-1 xl:grid-cols-2 gap-10">
 						<div className="flex flex-col gap-10">
 							<p className="text-center font-semibold text-lg">Add basic track infomation</p>
 							<div className="grid grid-cols-3 gap-1">
@@ -136,7 +135,7 @@ const Form = ({ setStep }) => {
 							<div className="flex flex-col gap-10">
 								<p className="text-center font-semibold text-lg">Add a driver</p>
 								<div className="flex">
-									<div className="grid grid-flow-col grid-cols-4 gap-1 items-center justify-between">
+									<div className="grid md:grid-flow-col grid-cols-2 md:grid-cols-4 gap-1 items-center justify-between">
 										<div className="flex flex-col gap-4">
 											<p className="">First name:</p>
 											<input
@@ -215,11 +214,11 @@ const Form = ({ setStep }) => {
 					<div className="flex justify-end">
 						<div
 							onClick={handleClickNextStep}
-							className="flex items-center justify-center relative p-1 group cursor-pointer"
+							className="mb-4 xl:mb-0 flex items-center justify-center relative p-1 group cursor-pointer"
 						>
 							<BsHexagon size={50} className="text-white group-hover:opacity-50 trasition-all" />
 							<BsChevronRight size={15} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-							<p className="absolute top-1/2 left-16 whitespace-nowrap -translate-y-1/2 w-0 group-hover:w-28 transition-all overflow-hidden">
+							<p className="hidden xl:block absolute top-1/2 left-16 whitespace-nowrap -translate-y-1/2 w-0 group-hover:w-28 transition-all overflow-hidden">
 								Next page
 							</p>
 						</div>

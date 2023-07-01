@@ -15,37 +15,37 @@ const WeatherInfo = () => {
 	const weatherConditions = [
 		{
 			main: "Thunderstorm",
-			icon: <TiWeatherStormy size={80} />,
+			icon: <TiWeatherStormy size={60} />,
 			iconColor: "gray",
 		},
 		{
 			main: "Drizzle",
-			icon: <TiWeatherShower size={80} />,
+			icon: <TiWeatherShower size={60} />,
 			iconColor: "blue",
 		},
 		{
 			main: "Rain",
-			icon: <TiWeatherDownpour size={80} />,
+			icon: <TiWeatherDownpour size={60} />,
 			iconColor: "blue",
 		},
 		{
 			main: "Snow",
-			icon: <TiWeatherSnow size={80} />,
+			icon: <TiWeatherSnow size={60} />,
 			iconColor: "white",
 		},
 		{
 			main: "Clear",
-			icon: <TiWeatherSunny size={80} />,
+			icon: <TiWeatherSunny size={60} />,
 			iconColor: "yellow",
 		},
 		{
 			main: "Clouds",
-			icon: <TiWeatherCloudy size={80} />,
+			icon: <TiWeatherCloudy size={60} />,
 			iconColor: "gray",
 		},
 		{
 			main: "Other Atmosphere",
-			icon: <TiWeatherCloudy size={80} />,
+			icon: <TiWeatherCloudy size={60} />,
 			iconColor: "gray",
 		},
 	];
@@ -85,8 +85,7 @@ const WeatherInfo = () => {
 		};
 
 		fetchWeatherData();
-	}, []);
-	console.log(weatherData);
+	}, [trackInfo.area]);
 	return (
 		<div className="bg-[#2f2c36] col-span-3 p-4 px-2 flex items-center flex-col">
 			<p className="text-gray-400 font-semibold text-center text-lg uppercase">{trackInfo.area}</p>
@@ -100,7 +99,7 @@ const WeatherInfo = () => {
 					<p className="text-gray-300 font-bold text-xl">
 						{weatherData?.main?.temp ? (weatherData?.main?.temp - 273)?.toFixed(2) + "°C" : ""}
 					</p>
-					<RiWindyFill size={80} className="text-blue-300" />
+					<RiWindyFill size={60} className="text-blue-300" />
 					<p className="text-gray-300 font-bold text-xl">
 						{weatherData?.main?.temp ? (weatherData?.wind?.speed * 3.6)?.toFixed(2) + "km/h" : ""}
 					</p>
