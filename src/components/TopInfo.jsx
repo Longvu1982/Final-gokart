@@ -30,7 +30,7 @@ const TopInfo = ({ data }) => {
     return {};
   };
 
-  const sortedLaptime = useMemo(
+  const sortedLapTime = useMemo(
     () =>
       structuredClone(data)?.sort(
         (a, b) => Math.min(...a.lap_time) - Math.min(...b.lap_time)
@@ -90,15 +90,15 @@ const TopInfo = ({ data }) => {
       <div className="w-full bg-[#393743] p-2 md:p-4">
         <div className="flex justify-between">
           {renderLeadingDriver(
-            sortedLaptime?.[0]?.lap_time,
-            sortedLaptime?.[0]?.id
+            sortedLapTime?.[0]?.lap_time,
+            sortedLapTime?.[0]?.id
           )}
           <div className="flex flex-col items-end md:items-center gap-6 mr-3">
             <h1 className="text-gray-200 font-semibold text-base md:text-xl">
               Top 3 Lap time
             </h1>
             <div className="flex flex-col gap-2">
-              {sortedLaptime?.map((item, index) => (
+              {sortedLapTime?.map((item, index) => (
                 <p key={item.id} className="flex flex-col items-center gap-1">
                   <span className="text-gray-400 text-base md:text-lg">{`Top ${
                     index + 1

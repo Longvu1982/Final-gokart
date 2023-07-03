@@ -59,8 +59,11 @@ def calculate_average_speed(objects):
         for obj_id, data in speeds.items():
             average_speed = data['total_speed'] / data['count']
             current_lap = speeds[obj_id]['current_lap']
+            # get the number of elements inside the current_lap array
             n_speed = len(speeds[obj_id]['lap_speed'])
+            # start calculating when current_lap equals 2 (calculate for lap 1)
             if current_lap > 1:
+                # add an empty element to the current_lap array
                 if current_lap > n_speed + 1:
                     speeds[obj_id]['lap_speed'].append(0)
                 speeds[obj_id]['lap_speed'][current_lap - 2] = average_speed

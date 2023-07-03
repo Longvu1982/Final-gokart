@@ -59,7 +59,7 @@ class Detector:
 
         # For calibration
         self.imgAnchor = np.array(
-            [[0, 388], [131, 46], [662, 68], [780, 410]]).astype(np.float32)
+            [[10, 388], [180, 50], [685, 70], [820, 410]]).astype(np.float32)
         self.realAnchor = np.array([[0, 440], [0, 0], [430, 0], [430, 440]]).astype(
             np.float32)  # in centimeter
         self.affineM = cv2.getPerspectiveTransform(
