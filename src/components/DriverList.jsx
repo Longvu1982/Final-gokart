@@ -2,29 +2,11 @@ import React from "react";
 import Images from "../assets/images/Image";
 import useDriverStore from "../hooks/useDriverInfo";
 
-// const drivers = [
-// 	{
-// 		id: 12,
-// 		img: Images.driver1,
-// 		name: ["Michael", "Suboi"],
-// 	},
-// 	{
-// 		id: 13,
-// 		img: Images.driver2,
-// 		name: ["Sebatial", "Raz"],
-// 	},
-// 	{
-// 		id: 14,
-// 		img: Images.driver3,
-// 		name: ["Infinity", "Beyond"],
-// 	},
-// ];
-
 export const DriverList = ({ data }) => {
 	const driverInfo = useDriverStore();
 	const drivers = driverInfo.drivers;
 	return (
-		<div className="p-6 grid gap-3">
+		<div className="p-6 flex flex-col gap-3 mt-6">
 			<h1 className="text-gray-200 text-xl font-semibold">Drivers list</h1>
 			<div className="xl:overflow-y-auto xl:max-h-[336px]">
 				{drivers.map((driver, index) => (
@@ -34,7 +16,7 @@ export const DriverList = ({ data }) => {
 					>
 						<div className="flex items-center justify-start gap-10 col-span-2">
 							<span className="text-gray-300">{index + 1}</span>
-							<div className="hidden md:show md:w-20 aspect-[5/4] shrink-0 grow-0 overflow-hidden">
+							<div className="hidden md:block md:w-20 aspect-[5/4] shrink-0 grow-0 overflow-hidden">
 								<img src={driver.img} alt="" className="w-full h-full object-cover" />
 							</div>
 							<p className="text-gray-200 flex items-center gap-2 text-xl font-light">

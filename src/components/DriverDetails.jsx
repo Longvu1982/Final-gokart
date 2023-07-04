@@ -2,24 +2,6 @@ import React from "react";
 import DriverItem from "./DriverItem";
 import useDriverStore from "../hooks/useDriverInfo";
 
-// const drivers = [
-//   {
-//     id: 12,
-//     img: Images.driver1,
-//     name: ["Michael", "Suboi"],
-//   },
-//   {
-//     id: 13,
-//     img: Images.driver2,
-//     name: ["Sebatial", "Raz"],
-//   },
-//   {
-//     id: 14,
-//     img: Images.driver3,
-//     name: ["Infinity", "Beyond"],
-//   },
-// ];
-
 const DriverDetails = ({ data }) => {
   const driverInfo = useDriverStore();
   const drivers = driverInfo.drivers;

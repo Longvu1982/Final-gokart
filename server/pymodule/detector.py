@@ -7,6 +7,9 @@ import numpy as np
 import os
 import json
 
+mask_path = os.path.join("server", "pymodule", "mask.jpg")
+mask = cv2.imread(mask_path)
+
 ARUCO_DICT = {
     "DICT_4X4_50": cv2.aruco.DICT_4X4_50,
     "DICT_4X4_100": cv2.aruco.DICT_4X4_100,
@@ -73,6 +76,7 @@ class Detector:
         self.frameTime = time.time_ns()
         self.frameCount = 0
         self.centerPoints = []
+        self.mask = mask
 
         # Constant for algorithm
         self.finishLineY = 420
@@ -120,6 +124,7 @@ class Detector:
         # none mean subtraction
         # true = convert from BGR to RGB
         # crop after resize = false
+        frame = cv2.bitwise_and(frame, self.mask)
         blob = cv2.dnn.blobFromImage(
             frame, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
         self.net.setInput(blob)
@@ -146,6 +151,7 @@ class Detector:
                 h += 30
                 # test draw bounding box
                 # cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                # cv2.imwrite("output.jpg", frame)
                 # cv2.imshow("fff", frame)
                 # cv2.waitKey(1)
                 if (w * h) > 5000:  # the region is significant
